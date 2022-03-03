@@ -52,25 +52,25 @@ train the models on all or 80% training data to achieve a desirable performance 
 |               Detectors               | Car(R11/R40) | Pedestrian(R11/R40) | Cyclist(R11/R40)  | download |
 |:---------------------------------------------:|:-------:|:-------:|:-------:|:---------:|
 | [PV-RCNN baseline](https://github.com/open-mmlab/OpenPCDet) | 83.90/84.83 | 57.90/56.67 | 70.47/71.95 |   | 
-| [CasA-PV](tools/cfgs/kitti_models/CasA-PV.yaml) | 86.18/85.86 | 58.90/59.17 | 66.01/69.09 | [model-44M](https://drive.google.com/file/d/1QolF8lkGwlJDpN3MV7-Y5MdhBCROJnfC/view?usp=sharing) | 
+| [CasA-PV](tools/cfgs/kitti_models/CasA-PV.yaml) | **86.18/85.86** | **58.90/59.17** | 66.01/69.09 | [model-44M](https://drive.google.com/file/d/1QolF8lkGwlJDpN3MV7-Y5MdhBCROJnfC/view?usp=sharing) | 
 
 #### Voxel-RCNN VS. CasA-V
 |               Detectors               | Car(R11/R40) | Pedestrian(R11/R40) | Cyclist(R11/R40)  | download |
 |:---------------------------------------------:|:-------:|:-------:|:-------:|:---------:|
 | [Voxel-RCNN baseline](https://github.com/open-mmlab/OpenPCDet) | 84.52/85.29 | 61.72/60.97 | 71.48/72.54 |   | 
-| [CasA-V](tools/cfgs/kitti_models/CasA-V.yaml)   | 86.54/86.30 | 67.93/66.54 | 74.27/73.08 | [model-44M](https://drive.google.com/file/d/13LO8BAz0h1MbXg97i8k18pHfWGxXEjFP/view?usp=sharing) |
+| [CasA-V](tools/cfgs/kitti_models/CasA-V.yaml)   | **86.54/86.30** | **67.93/66.54** | **74.27/73.08** | [model-44M](https://drive.google.com/file/d/13LO8BAz0h1MbXg97i8k18pHfWGxXEjFP/view?usp=sharing) |
 
 #### CT3D VS. CasA-T
 |               Detectors               | Car(R11/R40) | Pedestrian(R11/R40) | Cyclist(R11/R40)  | download |
 |:---------------------------------------------:|:-------:|:-------:|:-------:|:---------:|
 | [CT3D3cat baseline](https://github.com/hlsheng1/CT3D) | 84.97/85.04 | 56.28/55.58 | 71.71/71.88 |   | 
-| [CasA-T](tools/cfgs/kitti_models/CasA-T.yaml)   | 86.76/86.44 | 60.91/62.53 | 73.36/71.83 | [model-22M](https://drive.google.com/file/d/1pZ4xIa7aTPwAgxUDcbE7b_edctLVXQbb/view?usp=sharing) | 
+| [CasA-T](tools/cfgs/kitti_models/CasA-T.yaml)   | **86.76/86.44** | **60.91/62.53** | **73.36/71.83** | [model-22M](https://drive.google.com/file/d/1pZ4xIa7aTPwAgxUDcbE7b_edctLVXQbb/view?usp=sharing) | 
 
 #### PV-RCNN++ VS. CasA-PV2
 |               Detectors               | Car(R11/R40) | Pedestrian(R11/R40) | Cyclist(R11/R40)  | download |
 |:---------------------------------------------:|:-------:|:-------:|:-------:|:---------:|
 | *[PV-RCNN++ baseline](https://github.com/open-mmlab/OpenPCDet) | 85.36/85.50 | 57.43/57.15 | 71.30/71.85 |   | 
-| [CasA-PV2](tools/cfgs/kitti_models/CasA-PV2.yaml)   | 86.32/86.10 | 59.50/60.54 | 72.74/73.16 | [model-47M](https://drive.google.com/file/d/1POWX2ruds3t0XOSvBz5-VmG67c4F9mfE/view?usp=sharing) | 
+| [CasA-PV2](tools/cfgs/kitti_models/CasA-PV2.yaml)   | **86.32/86.10** | **59.50/60.54** | **72.74/73.16** | [model-47M](https://drive.google.com/file/d/1POWX2ruds3t0XOSvBz5-VmG67c4F9mfE/view?usp=sharing) | 
 
 Where * denodes reproduced results using their open-source codes. 
 
