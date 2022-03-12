@@ -262,7 +262,6 @@ class CasA_PV(CascadeRoIHeadTemplate):
             if not self.training:
                 all_preds.append(batch_box_preds)
                 all_scores.append(batch_cls_preds)
-                batch_dict['semi_dict' + stage_id] = {'rcnn_cls': rcnn_cls, 'rcnn_reg': rcnn_reg}
             else:
                 targets_dict['rcnn_cls'] = rcnn_cls
                 targets_dict['rcnn_reg'] = rcnn_reg
