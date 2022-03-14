@@ -72,19 +72,19 @@ train the models on all or 80% training data to achieve a desirable performance 
 | *[PV-RCNN++ baseline](https://github.com/open-mmlab/OpenPCDet) | 85.36/85.50 | 57.43/57.15 | 71.30/71.85 |   | 
 | [CasA-PV2](tools/cfgs/kitti_models/CasA-PV2.yaml)   | **86.32/86.10** | **59.50/60.54** | **72.74/73.16** | [model-47M](https://drive.google.com/file/d/1POWX2ruds3t0XOSvBz5-VmG67c4F9mfE/view?usp=sharing) | 
 
-Where * denodes reproduced results using their open-source codes. 
+Where * denodes reproduced results of a simplified version using their open-source codes. 
 
 ### Waymo Open Dataset Results
 Here we provided two models on WOD, where CasA-V-center denotes that the center-based RPN are used.
 All models are trained with **a single frame**  on 8 V100 GPUs, and the results of each cell here are mAP/mAPH calculated by the official Waymo evaluation metrics on the **whole** validation set (version 1.2).    
 
-|    Performance@(100\% Data, 2 returns)        | Vec_L1 | Vec_L2 | Ped_L1 | Ped_L2 | Cyc_L1 | Cyc_L2 |  
+|    100\% Data, 2 returns        | Vec_L1 | Vec_L2 | Ped_L1 | Ped_L2 | Cyc_L1 | Cyc_L2 |  
 |:---------------------------------------------:|----------:|:-------:|:-------:|:-------:|:-------:|:-------:|
-| [Voxel-RCNN baseline](https://github.com/open-mmlab/OpenPCDet)|77.43/76.71| 68.73/68.24 | 76.37/68.21 | 67.92/60.40 | 68.74/67.56 | 66.46/65.35 |
+| *[Voxel-RCNN baseline](https://github.com/open-mmlab/OpenPCDet)|77.43/76.71| 68.73/68.24 | 76.37/68.21 | 67.92/60.40 | 68.74/67.56 | 66.46/65.35 |
 | [CasA-V](tools/cfgs/waymo_models/CasA-V.yaml)|78.54/78.00| 69.91/69.42 | 80.88/73.10 | 71.87/64.78 | 69.66/68.38 | 67.07/66.83 |
-| [CasA-V-Center](tools/cfgs/waymo_models/CasA-V-Center.yaml) |**78.62/78.04 | 69.94/69.47 | 81.76/75.69 | 72.75/67.21 | 72.47/71.18 | 70.20/68.94**|
+| [CasA-V-Center](tools/cfgs/waymo_models/CasA-V-Center.yaml) |**78.62/78.04** | **69.94/69.47** | **81.76/75.69** | **72.75/67.21** | **72.47/71.18** | **70.20/68.94**|
 
-
+Where * denodes reproduced results using their open-source codes.
 
 We could not provide the above pretrained models due to [Waymo Dataset License Agreement](https://waymo.com/open/terms/), 
 but you could easily achieve similar performance by training with the default configs.
