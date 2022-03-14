@@ -97,7 +97,7 @@ Please refer to [INSTALL.md](docs/INSTALL.md) for the installation.
 Please refer to [GETTING_STARTED.md](docs/GETTING_STARTED.md) to learn more usage about this project.
 
 ## Acknowledgement
-This repo is developed from `OpenPCDet 0.3`, we thank shaoshuai shi for his implementation of OpenPCDet and the discussion during our CasA design.   
+This repo is developed from `OpenPCDet 0.3`, we thank shaoshuai shi for his implementation of [OpenPCDet](https://github.com/open-mmlab/OpenPCDet) and the discussion during our CasA design.   
 
 ## Citation 
 If you find this project useful in your research, please consider cite:
