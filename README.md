@@ -78,10 +78,11 @@ Where * denodes reproduced results using their open-source codes.
 Here we provided two models on WOD, where CasA-V-center denotes that the center-based RPN are used.
 All models are trained with **a single frame**  on 8 V100 GPUs, and the results of each cell here are mAP/mAPH calculated by the official Waymo evaluation metrics on the **whole** validation set (version 1.2).    
 
-|    Performance@(train with 100\% Data)            | Vec_L1 | Vec_L2 | Ped_L1 | Ped_L2 | Cyc_L1 | Cyc_L2 |  
+|    Performance@(100\% Data, 2 returns)        | Vec_L1 | Vec_L2 | Ped_L1 | Ped_L2 | Cyc_L1 | Cyc_L2 |  
 |:---------------------------------------------:|----------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+| [Voxel-RCNN baseline](https://github.com/open-mmlab/OpenPCDet)|77.43/76.71| 68.73/68.24 | 76.37/68.21 | 67.92/60.40 | 68.74/67.56 | 66.46/65.35 |
 | [CasA-V](tools/cfgs/waymo_models/CasA-V.yaml)|78.54/78.00| 69.91/69.42 | 80.88/73.10 | 71.87/64.78 | 69.66/68.38 | 67.07/66.83 |
-| [CasA-V-Center](tools/cfgs/waymo_models/CasA-V-Center.yaml) |78.62/78.04 | 69.94/69.47 | 81.76/75.69 | 72.75/67.21 | 72.47/71.18 | 70.20/68.94|
+| [CasA-V-Center](tools/cfgs/waymo_models/CasA-V-Center.yaml) |**78.62/78.04 | 69.94/69.47 | 81.76/75.69 | 72.75/67.21 | 72.47/71.18 | 70.20/68.94**|
 
 
 
