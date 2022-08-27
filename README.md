@@ -107,8 +107,9 @@ The paper of CasA is on the way.
 
 ```
 @article{casa2022,
-    title={CasA: 3D Object Detection with Cascade Attention},
+    title={CasA: A Cascade Attention Network for 3D Object Detection from LiDAR point clouds},
     author={Wu, Hai and Deng, Jinhao and Wen, Chenglu and Li, Xin and Wang, Cheng},
+    journal={IEEE TGRS}
     year={2022}
 }
 
