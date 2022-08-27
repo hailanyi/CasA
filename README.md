@@ -3,8 +3,8 @@
 
 `CasA` is a simple multi-stage 3D object detection framework based on a Cascade Attention design.
 `CasA` can be integrated into many SoTA 3D detectors and greatly improve their detection performance. 
-The paper of "CasA: A Cascade Attention Network for 3D Object Detection from LiDAR point clouds" is on the way. 
-
+The paper of "CasA: A Cascade Attention Network for 3D Object Detection from LiDAR point clouds" can be found [here](https://github.com/hailanyi/CasA/tree/master/docs/CasA.pdf). 
+This code is mostly built upon [OpenPCDet](https://github.com/open-mmlab/OpenPCDet).
 
 ## Overview
 - [Cascade Attention Design](#cascade-attention-design)
@@ -103,20 +103,11 @@ This repo is developed from `OpenPCDet 0.3`, we thank shaoshuai shi for his impl
 ## Citation 
 If you find this project useful in your research, please consider cite:
 
-The paper of CasA is on the way. 
-
 ```
 @article{casa2022,
     title={CasA: A Cascade Attention Network for 3D Object Detection from LiDAR point clouds},
     author={Wu, Hai and Deng, Jinhao and Wen, Chenglu and Li, Xin and Wang, Cheng},
-    journal={IEEE TGRS}
+    journal={IEEE Transactions on Geoscience and Remote Sensing}
     year={2022}
-}
-
-@misc{openpcdet2020,
-    title={OpenPCDet: An Open-source Toolbox for 3D Object Detection from Point Clouds},
-    author={OpenPCDet Development Team},
-    howpublished = {\url{https://github.com/open-mmlab/OpenPCDet}},
-    year={2020}
 }
 ```
