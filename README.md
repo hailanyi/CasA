@@ -1,9 +1,9 @@
 
-# CasA: CasA: A Cascade Attention Network for 3D Object Detection from LiDAR point clouds 
+# CasA: A Cascade Attention Network for 3D Object Detection from LiDAR point clouds 
 
 `CasA` is a simple multi-stage 3D object detection framework based on a Cascade Attention design.
 `CasA` can be integrated into many SoTA 3D detectors and greatly improve their detection performance. 
-The paper of "CasA: 3D Object Detection with Cascade Attention" is on the way. 
+The paper of "CasA: A Cascade Attention Network for 3D Object Detection from LiDAR point clouds" is on the way. 
 
 
 ## Overview
