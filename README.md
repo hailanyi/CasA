@@ -4,7 +4,7 @@
 `CasA` is a simple multi-stage 3D object detection framework based on a Cascade Attention design.
 `CasA` can be integrated into many SoTA 3D detectors and greatly improve their detection performance. 
 The paper of "CasA: A Cascade Attention Network for 3D Object Detection from LiDAR point clouds" can be found [here](https://github.com/hailanyi/CasA/tree/master/docs/CasA.pdf).  
-This code is mostly built upon [OpenPCDet](https://github.com/open-mmlab/OpenPCDet). Not that, the CasA++ is based on a transfer learning framework: pre-training on Waymo and fine-tuning on KITTI. Since additional data has been included, we did not release the codes. 
+This code is mostly built upon [OpenPCDet](https://github.com/open-mmlab/OpenPCDet). Not that, the CasA++ is based on a transfer learning framework: pre-training on Waymo and fine-tuning on KITTI. Since additional data has been included, we did not release the CasA++ codes. 
 
 ## Overview
 - [Cascade Attention Design](#cascade-attention-design)
