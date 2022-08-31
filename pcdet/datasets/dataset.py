@@ -121,7 +121,7 @@ class DatasetTemplate(torch_data.Dataset):
 
         Returns:
             data_dict:
-                （数据帧编号）frame_id: string
+                frame_id: string
                 points: (N, 3 + C_in)
                 gt_boxes: optional, (N, 7 + C) [x, y, z, dx, dy, dz, heading, ...]
                 gt_names: optional, (N), string
