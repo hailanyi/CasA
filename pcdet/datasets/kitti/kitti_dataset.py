@@ -437,7 +437,7 @@ if __name__ == '__main__':
     import yaml
     from pathlib import Path
     from easydict import EasyDict
-    dataset_cfg = EasyDict(yaml.load(open("/home/projects/wh/OpenProjects/OpenPCDet/tools/cfgs/one_frame/dataset_configs/kitti_dataset_trainval.yaml")))
+    dataset_cfg = EasyDict(yaml.load(open("/home/projects/wh/OpenProjects/OpenPCDet/tools/cfgs/dataset_configs/kitti_dataset.yaml")))
     ROOT_DIR = Path('/home/data-ssd/kitti/detection/detection')
     create_kitti_infos(
         dataset_cfg=dataset_cfg,
