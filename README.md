@@ -107,7 +107,7 @@ If you find this project useful in your research, please consider cite:
 @article{casa2022,
     title={CasA: A Cascade Attention Network for 3D Object Detection from LiDAR point clouds},
     author={Wu, Hai and Deng, Jinhao and Wen, Chenglu and Li, Xin and Wang, Cheng},
-    journal={IEEE Transactions on Geoscience and Remote Sensing}
+    journal={IEEE Transactions on Geoscience and Remote Sensing},
     year={2022}
 }
 ```
