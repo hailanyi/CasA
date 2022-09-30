@@ -9,8 +9,7 @@ This code is mostly built upon [OpenPCDet](https://github.com/open-mmlab/OpenPCD
 ## Overview
 - [Cascade Attention Design](#cascade-attention-design)
 - [Model Zoo](#model-zoo)
-- [Installation](docs/INSTALL.md)
-- [Getting Started](docs/GETTING_STARTED.md)
+- [Getting Started](#getting-started)
 - [Citation](#citation)
 
 
