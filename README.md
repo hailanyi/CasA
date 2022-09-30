@@ -160,6 +160,11 @@ CasA
 ├── tools
 ```
 
+Run following command to creat dataset infos:
+```
+python3 -m pcdet.datasets.waymo.waymo_tracking_dataset --cfg_file tools/cfgs/dataset_configs/waymo_tracking_dataset.yaml 
+```
+
 #### Installation
 
 ```python3 setup.py develop```
