@@ -47,7 +47,8 @@ class DatasetTemplate(torch_data.Dataset):
             self.test_augmentor = None
 
         self.data_processor = DataProcessor(
-            self.dataset_cfg.DATA_PROCESSOR, point_cloud_range=self.point_cloud_range, training=self.training
+            self.dataset_cfg.DATA_PROCESSOR, point_cloud_range=self.point_cloud_range,
+            training=self.training, num_point_features=self.point_feature_encoder.num_point_features
         )
 
         self.grid_size = self.data_processor.grid_size

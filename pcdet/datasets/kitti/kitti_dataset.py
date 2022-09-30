@@ -433,15 +433,15 @@ def create_kitti_infos(dataset_cfg, class_names, data_path, save_path, workers=4
 
 if __name__ == '__main__':
     import sys
-    #if sys.argv.__len__() > 1 and sys.argv[1] == 'create_kitti_infos':
-    import yaml
-    from pathlib import Path
-    from easydict import EasyDict
-    dataset_cfg = EasyDict(yaml.load(open("/home/projects/wh/OpenProjects/OpenPCDet/tools/cfgs/dataset_configs/kitti_dataset.yaml")))
-    ROOT_DIR = Path('/home/data-ssd/kitti/detection/detection')
-    create_kitti_infos(
-        dataset_cfg=dataset_cfg,
-        class_names=['Car', 'Pedestrian', 'Cyclist'],
-        data_path=ROOT_DIR,
-        save_path=ROOT_DIR
-    )
+    if sys.argv.__len__() > 1 and sys.argv[1] == 'create_kitti_infos':
+        import yaml
+        from pathlib import Path
+        from easydict import EasyDict
+        dataset_cfg = EasyDict(yaml.safe_load(open(sys.argv[2])))
+        ROOT_DIR = (Path(__file__).resolve().parent / '../../../').resolve()
+        create_kitti_infos(
+            dataset_cfg=dataset_cfg,
+            class_names=['Car', 'Pedestrian', 'Cyclist'],
+            data_path=ROOT_DIR / 'data' / 'kitti',
+            save_path=ROOT_DIR / 'data' / 'kitti'
+        )

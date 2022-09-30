@@ -37,6 +37,9 @@ results on KITTI 3D object detection benchmark.
 
 ![framework](./docs/framework.png)
 
+## Update Log
+
+* 2022/9/30 Update details of [installation](#installation). Update [environment](#environment-we-tested) we tested. Update [Spconv2.X](https://github.com/traveller59/spconv) support. 
 
 ## Model Zoo
 
@@ -44,7 +47,7 @@ results on KITTI 3D object detection benchmark.
 The results are the 3D detection performance of moderate difficulty on the *val* set of KITTI dataset.
 Currently, this repo supports CasA-PV, CasA-V, CasA-T and CasA-PV2. The base detectors are 
 PV-RCNN, Voxel-RCNN, CT3D and PV-RCNN++, respectively.
-* All models are trained with 2 3090 GPUs and are available for download. 
+* All released models are trained with 2 3090 GPUs and are available for download. 
 * These models are not suitable to directly report results on KITTI *test* set, please use slightly lower score threshold and 
 train the models on all or 80% training data to achieve a desirable performance on KITTI *test* set.
 
@@ -89,13 +92,122 @@ Where * denodes reproduced results using their open-source codes.
 We could not provide the above pretrained models due to [Waymo Dataset License Agreement](https://waymo.com/open/terms/), 
 but you could easily achieve similar performance by training with the default configs.
 
-## Installation
-
-Please refer to [INSTALL.md](docs/INSTALL.md) for the installation.
-
 ## Getting Started
 
-Please refer to [GETTING_STARTED.md](docs/GETTING_STARTED.md) to learn more usage about this project.
+### Environment we tested
+
+Our released implementation is tested on.
++ Ubuntu 18.04
++ Python 3.6.9 
++ PyTorch 1.8.1
++ Numba 0.53.1
++ [Spconv 1.2.1](https://github.com/traveller59/spconv/tree/8da6f967fb9a054d8870c3515b1b44eca2103634)
++ NVIDIA CUDA 11.1
++ 8x Tesla V100 GPUs
+
+We also tested on.
++ Ubuntu 18.04
++ Python 3.9.13 
++ PyTorch 1.8.1
++ Numba 0.53.1
++ [Spconv 2.1.22](https://github.com/traveller59/spconv) # pip install spconv-cu111
++ NVIDIA CUDA 11.1 
++ 2x 3090 GPUs
+
+### Prepare Dataset 
+
+#### KITTI Dataset
+
+* Please download the official [KITTI 3D object detection](http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d) dataset and organize the downloaded files as follows (the road planes could be downloaded from [[road plane]](https://drive.google.com/file/d/1d5mq0RXRnvHPVeKx6Q612z0YRO1t2wAp/view?usp=sharing), which are optional for data augmentation in the training):
+
+```
+CasA
+├── data
+│   ├── kitti
+│   │   │── ImageSets
+│   │   │── training
+│   │   │   ├──calib & velodyne & label_2 & image_2 & (optional: planes)
+│   │   │── testing
+│   │   │   ├──calib & velodyne & image_2
+├── pcdet
+├── tools
+```
+
+Run following command to creat dataset infos:
+```
+python3 -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/kitti_dataset.yaml
+```
+
+
+
+#### Waymo Dataset
+
+```
+CasA
+├── data
+│   ├── waymo
+│   │   │── ImageSets
+│   │   │── raw_data
+│   │   │   │── segment-xxxxxxxx.tfrecord
+|   |   |   |── ...
+|   |   |── waymo_processed_data_train_val_test
+│   │   │   │── segment-xxxxxxxx/
+|   |   |   |── ...
+│   │   │── pcdet_waymo_track_dbinfos_train_cp.pkl
+│   │   │── waymo_infos_test.pkl
+│   │   │── waymo_infos_train.pkl
+│   │   │── waymo_infos_val.pkl
+├── pcdet
+├── tools
+```
+
+#### Installation
+
+```python3 setup.py develop```
+
+### Training and Evaluation
+
+#### Evaluation
+
+```
+cd tools
+python3 test.py --cfg_file ${CONFIG_FILE} --batch_size ${BATCH_SIZE} --ckpt ${CKPT}
+```
+
+For example, if you test the CasA-V model:
+
+```
+cd tools
+python3 test.py --cfg_file cfgs/kitti_models/CasA-V.yaml --ckpt CasA-V.pth
+```
+
+Multiple GPU test: you need modify the gpu number in the dist_test.sh and run
+```
+sh dist_test.sh 
+```
+The log infos are saved into log-test.txt
+You can run ```cat log-test.txt``` to view the test results.
+
+#### Training
+
+```
+cd tools
+python3 train.py --cfg_file ${CONFIG_FILE}
+```
+
+For example, if you train the CasA-V model:
+
+```
+cd tools
+python3 train.py --cfg_file cfgs/kitti_models/CasA-V.yaml
+```
+
+Multiple GPU train: you can modify the gpu number in the dist_train.sh and run
+```
+sh dist_train.sh
+```
+The log infos are saved into log.txt
+You can run ```cat log.txt``` to view the training process.
 
 ## Acknowledgement
 This repo is developed from `OpenPCDet 0.3`, we thank shaoshuai shi for his implementation of [OpenPCDet](https://github.com/open-mmlab/OpenPCDet).   

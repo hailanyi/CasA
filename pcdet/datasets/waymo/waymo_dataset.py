@@ -372,9 +372,7 @@ class WaymoDataset(DatasetTemplate):
 def create_waymo_infos(dataset_cfg, class_names, data_path, save_path,save_ssd_path,
                        raw_data_tag='raw_data', processed_data_tag='waymo_processed_data',
                        workers=multiprocessing.cpu_count()):
-    # multiprocessing.cpu_count() 统计cpu核数
-    # https://blog.csdn.net/qq_30159015/article/details/82658896
-    # workers 控制进程数，所以要修改 get_infos里面的相关语句
+
     dataset = WaymoDataset(
         dataset_cfg=dataset_cfg, class_names=class_names, root_path=data_path,
         training=False, logger=common_utils.create_logger()
@@ -386,40 +384,33 @@ def create_waymo_infos(dataset_cfg, class_names, data_path, save_path,save_ssd_p
 
     print('---------------Start to generate data infos---------------')
 
-    # dataset.set_split(train_split)
-    # waymo_infos_train = dataset.get_infos(
-    #     raw_data_path=data_path / 'training',
-    #     save_path=save_path / processed_data_tag, num_workers=workers, has_label=True,
-    #     sampled_interval=1
-    # )
-    # # waymo_infos_train = dataset.get_infos(
-    # #     raw_data_path=data_path / raw_data_tag,
-    # #     save_path=save_path / processed_data_tag, num_workers=workers, has_label=True,
-    # #     sampled_interval=1
-    # # )
-    # with open(train_filename, 'wb') as f:
-    #     pickle.dump(waymo_infos_train, f)
-    # print('----------------Waymo info train file is saved to %s----------------' % train_filename)
+    dataset.set_split(train_split)
+    waymo_infos_train = dataset.get_infos(
+        raw_data_path=data_path / raw_data_tag,
+        save_path=save_path / processed_data_tag, num_workers=workers, has_label=True,
+        sampled_interval=1
+    )
 
-    #dataset.set_split(val_split)
-    # waymo_infos_val = dataset.get_infos(
-    #     raw_data_path=data_path / raw_data_tag,
-    #     save_path=save_path / processed_data_tag, num_workers=workers, has_label=True,
-    #     sampled_interval=1
-    # )
-    #waymo_infos_val = dataset.get_infos(
-    #    raw_data_path=data_path / 'validation',
-    #    save_path=save_path / processed_data_tag, num_workers=workers, has_label=True,
-    #    sampled_interval=1
-    #)
-    #with open(val_filename, 'wb') as f:
-    #    pickle.dump(waymo_infos_val, f)
-    #print('----------------Waymo info val file is saved to %s----------------' % val_filename)
+    with open(train_filename, 'wb') as f:
+        pickle.dump(waymo_infos_train, f)
+    print('----------------Waymo info train file is saved to %s----------------' % train_filename)
+
+
+    waymo_infos_val = dataset.get_infos(
+       raw_data_path=data_path / raw_data_tag,
+       save_path=save_path / processed_data_tag, num_workers=workers, has_label=True,
+       sampled_interval=1
+    )
+
+    with open(val_filename, 'wb') as f:
+       pickle.dump(waymo_infos_val, f)
+    print('----------------Waymo info val file is saved to %s----------------' % val_filename)
+    
 
     print('---------------Start create groundtruth database for data augmentation---------------')
     dataset.set_split(train_split)
     dataset.create_groundtruth_database(
-        info_path=train_filename, save_path=save_path,save_ssd_path=save_ssd_path, split='train', sampled_interval=10,
+        info_path=train_filename, save_path=save_path, save_ssd_path=save_ssd_path, split='train', sampled_interval=1,
         used_classes=['Vehicle', 'Pedestrian', 'Cyclist']
     )
     print('---------------Data preparation Done---------------')
@@ -436,27 +427,14 @@ if __name__ == '__main__':
     if args.func == 'create_waymo_infos':
         import yaml
         from easydict import EasyDict
-        dataset_cfg = EasyDict(yaml.load(open(args.cfg_file))) # EasyDict 像访问属性一样访问dict里的变量
-        # ROOT_DIR = (Path(__file__).resolve().parent / '../../../').resolve()
-        ROOT_DIR = "/home/data/waymo/perception"#/media/data/xzr/Waymo/DT/dataset-tf"
-        ROOT_DIR = Path(ROOT_DIR)
-        ROOT_DIR = ROOT_DIR.resolve()
-        SSD_ROOT_DIR = Path('/home/scsc-asc/data')
+        dataset_cfg = EasyDict(yaml.load(open(args.cfg_file)))
+        ROOT_DIR = (Path(__file__).resolve().parent / '../../../').resolve()
         create_waymo_infos(
             dataset_cfg=dataset_cfg,
-            class_names=['Vehicle', 'Pedestrian', 'Cyclist'],  # 是否要修改类别
-            data_path=ROOT_DIR,
-            save_path=ROOT_DIR,
-            save_ssd_path = SSD_ROOT_DIR,
+            class_names=['Vehicle', 'Pedestrian', 'Cyclist'],
+            data_path=ROOT_DIR / 'data' / 'waymo',
+            save_path=ROOT_DIR / 'data' / 'waymo',
+            save_ssd_path=None,
             raw_data_tag='raw_data',
             processed_data_tag=dataset_cfg.PROCESSED_DATA_TAG
         )
-
-        # create_waymo_infos(
-        #     dataset_cfg=dataset_cfg,
-        #     class_names=['Vehicle', 'Pedestrian', 'Cyclist'],
-        #     data_path=ROOT_DIR / 'data' / 'waymo',
-        #     save_path=ROOT_DIR / 'data' / 'waymo',
-        #     raw_data_tag='raw_data',
-        #     processed_data_tag=dataset_cfg.PROCESSED_DATA_TAG
-        # )

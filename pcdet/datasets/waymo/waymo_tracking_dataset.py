@@ -690,7 +690,7 @@ def create_waymo_infos(dataset_cfg, class_names, data_path, save_path,
    
     dataset.set_split(train_split)
     waymo_infos_train = dataset.get_infos(
-        raw_data_path=data_path / 'training',
+        raw_data_path=data_path / raw_data_tag,
         save_path=save_path / processed_data_tag, num_workers=workers, has_label=True,
         sampled_interval=1
     )
@@ -701,7 +701,7 @@ def create_waymo_infos(dataset_cfg, class_names, data_path, save_path,
 
     dataset.set_split(val_split)
     waymo_infos_val = dataset.get_infos(
-        raw_data_path=data_path / 'validation',
+        raw_data_path=data_path / raw_data_tag,
         save_path=save_path / processed_data_tag, num_workers=workers, has_label=True,
         sampled_interval=1
     )
@@ -712,7 +712,7 @@ def create_waymo_infos(dataset_cfg, class_names, data_path, save_path,
 
     dataset.set_split(test_split)
     waymo_infos_test = dataset.get_infos(
-        raw_data_path=data_path / 'testing',
+        raw_data_path=data_path / raw_data_tag,
         save_path=save_path / processed_data_tag, num_workers=workers, has_label=False,
         sampled_interval=1
     )
@@ -744,15 +744,13 @@ if __name__ == '__main__':
         import yaml
         from easydict import EasyDict
         dataset_cfg = EasyDict(yaml.load(open(args.cfg_file)))
-        # ROOT_DIR = (Path(__file__).resolve().parent / '../../../').resolve()
-        ROOT_DIR = '/home/wh/data/data/waymo/perception/tfrecord'
-        ROOT_DIR = Path(ROOT_DIR)
-        ROOT_DIR = ROOT_DIR.resolve()
+        ROOT_DIR = (Path(__file__).resolve().parent / '../../../').resolve()
         create_waymo_infos(
             dataset_cfg=dataset_cfg,
             class_names=['Vehicle', 'Pedestrian', 'Cyclist'],
-            data_path=ROOT_DIR,
-            save_path=ROOT_DIR,
+            data_path=ROOT_DIR / 'data' / 'waymo',
+            save_path=ROOT_DIR / 'data' / 'waymo',
             raw_data_tag='raw_data',
             processed_data_tag=dataset_cfg.PROCESSED_DATA_TAG
         )
+

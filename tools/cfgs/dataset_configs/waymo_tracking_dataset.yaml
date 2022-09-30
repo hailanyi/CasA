@@ -1,5 +1,5 @@
 DATASET: 'WaymoTrackingDataset'
-DATA_PATH: '/home/data-ssd/waymo/perception'
+DATA_PATH: '../data/waymo'
 PROCESSED_DATA_TAG: 'waymo_processed_data_train_val_test'
 
 POINT_CLOUD_RANGE: [-75.2, -75.2, -2, 75.2, 75.2, 4]
