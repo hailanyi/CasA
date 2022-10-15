@@ -38,7 +38,11 @@ results on KITTI 3D object detection benchmark.
 
 ## Update Log
 
-* 2022/9/30 Update details of [installation](#installation). Update [environment](#environment-we-tested) we tested. Update [Spconv2.X](https://github.com/traveller59/spconv) support. 
+* 2022/10/15 Update a 3D multi-object tracker [CasTrack](https://github.com/hailanyi/3D-Multi-Object-Tracker) based on the CasA detections, currently **rank first** on the KITTI tracking learder :fire:!
+
+* 2022/9/30 Update details of [installation](#installation). Update [environment](#environment-we-tested) we tested. Update [Spconv2.X](https://github.com/traveller59/spconv) support :rocket:!
+
+* 2022/3/3 Initial update, achieve SOTA performance on the KITTI 3D detection leader-board
 
 ## Model Zoo
 
