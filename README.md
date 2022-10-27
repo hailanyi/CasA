@@ -70,7 +70,7 @@ train the models on all or 80% training data to achieve a desirable performance 
 |               Detectors               | Car(R11/R40) | Pedestrian(R11/R40) | Cyclist(R11/R40)  | download |
 |:---------------------------------------------:|:-------:|:-------:|:-------:|:---------:|
 | [CT3D3cat baseline](https://github.com/hlsheng1/CT3D) | 84.97/85.04 | 56.28/55.58 | 71.71/71.88 |   | 
-| [CasA-T](tools/cfgs/kitti_models/CasA-T.yaml)   | **86.76/86.44** | **60.91/62.53** | **73.36**/71.83 | [model-22M](https://drive.google.com/file/d/1pZ4xIa7aTPwAgxUDcbE7b_edctLVXQbb/view?usp=sharing) | 
+| [CasA-T](tools/cfgs/kitti_models/CasA-T.yaml)   | **86.76/86.44** | **60.91/62.53** | **73.36**/71.83 | [model-22M](https://drive.google.com/file/d/1pZ4xIa7aTPwAgxUDcbE7b_edctLVXQbb/view?usp=sharing)| 
 
 #### PV-RCNN++ VS. CasA-PV2
 |               Detectors               | Car(R11/R40) | Pedestrian(R11/R40) | Cyclist(R11/R40)  | download |
