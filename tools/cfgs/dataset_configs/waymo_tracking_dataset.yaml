@@ -19,18 +19,6 @@ MERGE_FRAME: True
 TL: False
 SAMPLING: False
 
-TEST_AUGMENTOR:
-    AUG_CONFIG_LIST:
-          # 0.39269908169872414, 0.7853981633974483, 2.356194490192345, 2.748893571891069, 3.141592653589793
-        - NAME: world_rotation
-          WORLD_ROT: 0
-
-        - NAME: world_flip
-          ALONG_AXIS: None
-
-        - NAME: world_scaling
-          WORLD_SCALE: 1
-
 
 DATA_AUGMENTOR:
     DISABLE_AUG_LIST: ['placeholder']

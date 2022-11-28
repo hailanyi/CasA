@@ -3,8 +3,8 @@
 
 `CasA` is a simple multi-stage 3D object detection framework based on a Cascade Attention design.
 `CasA` can be integrated into many SoTA 3D detectors and greatly improve their detection performance. 
-The paper of "CasA: A Cascade Attention Network for 3D Object Detection from LiDAR point clouds" can be found [here](https://github.com/hailanyi/CasA/tree/master/docs/CasA.pdf).  
-This code is mostly built upon [OpenPCDet](https://github.com/open-mmlab/OpenPCDet). Not that, the CasA++ is based on a transfer learning framework: pre-training on Waymo and fine-tuning on KITTI. Since additional data has been included, we did not release the CasA++ codes. 
+The paper of "CasA: A Cascade Attention Network for 3D Object Detection from LiDAR point clouds" can be found [here](https://ieeexplore.ieee.org/abstract/document/9870747).  
+This code is mostly built upon [OpenPCDet](https://github.com/open-mmlab/OpenPCDet). Note that, the CasA++ is based on a transfer learning framework: pre-training on Waymo and fine-tuning on KITTI. Since additional data has been included, we did not release the CasA++ codes. 
 
 ## Overview
 - [Cascade Attention Design](#cascade-attention-design)
@@ -38,7 +38,11 @@ results on KITTI 3D object detection benchmark.
 
 ## Update Log
 
-* 2022/9/30 Update details of [installation](#installation). Update [environment](#environment-we-tested) we tested. Update [Spconv2.X](https://github.com/traveller59/spconv) support. 
+* 2022/10/15 Update a 3D multi-object tracker [CasTrack](https://github.com/hailanyi/3D-Multi-Object-Tracker) based on the CasA detections, currently **rank first** on the KITTI tracking leader-board :fire:!
+
+* 2022/9/30 Update details of [installation](#installation). Update [environment](#environment-we-tested) we tested. Update [Spconv2.X](https://github.com/traveller59/spconv) support :rocket:!
+
+* 2022/3/3 Initial update, achieve SOTA performance on the KITTI 3D detection leader-board
 
 ## Model Zoo
 
@@ -66,7 +70,7 @@ train the models on all or 80% training data to achieve a desirable performance 
 |               Detectors               | Car(R11/R40) | Pedestrian(R11/R40) | Cyclist(R11/R40)  | download |
 |:---------------------------------------------:|:-------:|:-------:|:-------:|:---------:|
 | [CT3D3cat baseline](https://github.com/hlsheng1/CT3D) | 84.97/85.04 | 56.28/55.58 | 71.71/71.88 |   | 
-| [CasA-T](tools/cfgs/kitti_models/CasA-T.yaml)   | **86.76/86.44** | **60.91/62.53** | **73.36**/71.83 | [model-22M](https://drive.google.com/file/d/1pZ4xIa7aTPwAgxUDcbE7b_edctLVXQbb/view?usp=sharing) | 
+| [CasA-T](tools/cfgs/kitti_models/CasA-T.yaml)   | **86.76/86.44** | **60.91/62.53** | **73.36**/71.83 | [model-22M](https://drive.google.com/file/d/1pZ4xIa7aTPwAgxUDcbE7b_edctLVXQbb/view?usp=sharing)| 
 
 #### PV-RCNN++ VS. CasA-PV2
 |               Detectors               | Car(R11/R40) | Pedestrian(R11/R40) | Cyclist(R11/R40)  | download |
