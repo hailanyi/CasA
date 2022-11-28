@@ -172,7 +172,7 @@ python3 -m pcdet.datasets.waymo.waymo_tracking_dataset --cfg_file tools/cfgs/dat
 #### Installation
 
 ```
-git clone https://github.com/hailanyi/TED2.git
+git clone https://github.com/hailanyi/CasA.git
 cd CasA
 python3 setup.py develop
 ```
