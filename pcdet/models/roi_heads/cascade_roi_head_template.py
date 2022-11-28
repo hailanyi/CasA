@@ -9,6 +9,7 @@ from .target_assigner.proposal_target_layer import ProposalTargetLayer
 from ...utils.odiou_loss import odiou_3D
 import time
 import copy
+from ...utils.bbloss import bb_loss, APLoss
 
 class CascadeRoIHeadTemplate(nn.Module):
     def __init__(self, num_class,num_frames, model_cfg):
@@ -213,7 +214,26 @@ class CascadeRoIHeadTemplate(nn.Module):
         else:
             raise NotImplementedError
 
-        return rcnn_loss_reg, tb_dict
+        reg_valid_mask = forward_ret_dict['reg_valid_mask'].view(-1)
+        code_size = self.box_coder.code_size
+        shape = forward_ret_dict['gt_of_rois'].shape
+        gt_boxes3d_ct = forward_ret_dict['gt_of_rois'].clone().view(shape[0] * shape[1], -1)[:, 0:7]
+        rcnn_reg = forward_ret_dict['rcnn_reg']  # (rcnn_batch_size, C)
+        rois = forward_ret_dict['rois'].clone().view(-1, code_size)[:, 0:7]
+        rois[:, 0:3] = 0
+        rois[:, 6] = 0
+
+        batch_box_preds = self.box_coder.decode_torch(rcnn_reg, rois).view(-1, code_size)
+
+        fg_mask = (reg_valid_mask > 0)
+
+        if len(gt_boxes3d_ct[fg_mask]) == 0:
+            b_loss=0
+        else:
+            b_loss = bb_loss(batch_box_preds[fg_mask], gt_boxes3d_ct[fg_mask]).sum()
+            b_loss = b_loss / (fg_mask.sum() + 1)
+
+        return rcnn_loss_reg+b_loss, tb_dict
 
     def get_box_cls_layer_loss(self, forward_ret_dict):
         loss_cfgs = self.model_cfg.LOSS_CONFIG
