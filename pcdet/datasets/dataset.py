@@ -232,9 +232,14 @@ class SeqDatasetTemplate(torch_data.Dataset):
         self.data_augmentor = DataAugmentor(
             self.root_path, self.dataset_cfg.DATA_AUGMENTOR, self.class_names, logger=self.logger,num_frames=self.num_data_frames
         ) if self.training else None
-
-        self.test_augmentor = TestAugmentor( self.dataset_cfg.TEST_AUGMENTOR, self.class_names,logger=self.logger,num_frames=self.num_data_frames)
         
+        test_aug_cfg = self.dataset_cfg.get('TEST_AUGMENTOR', None)
+
+        if test_aug_cfg is not None:
+            self.test_augmentor = TestAugmentor( self.dataset_cfg.TEST_AUGMENTOR, self.class_names,logger=self.logger,num_frames=self.num_data_frames)
+        else:
+            self.test_augmentor = None
+
         self.data_processor = DataProcessor(
             self.dataset_cfg.DATA_PROCESSOR, point_cloud_range=self.point_cloud_range, training=self.training,num_frames=self.num_data_frames
         )
