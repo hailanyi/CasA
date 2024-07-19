@@ -241,7 +241,7 @@ class SeqDatasetTemplate(torch_data.Dataset):
             self.test_augmentor = None
 
         self.data_processor = DataProcessor(
-            self.dataset_cfg.DATA_PROCESSOR, point_cloud_range=self.point_cloud_range, training=self.training,num_frames=self.num_data_frames
+            self.dataset_cfg.DATA_PROCESSOR, point_cloud_range=self.point_cloud_range, training=self.training,num_frames=self.num_data_frames,num_point_features=self.point_feature_encoder.num_point_features
         )
 
         self.grid_size = self.data_processor.grid_size
